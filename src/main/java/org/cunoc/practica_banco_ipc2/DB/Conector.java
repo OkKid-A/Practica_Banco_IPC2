@@ -29,10 +29,8 @@ public class Conector {
 
     public ResultSet selectFrom(String query) {
         try {
-            Statement statement;
-            try (Connection conneccion = realizarConneccion()) {
-                statement = conneccion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            }
+            Connection conneccion = realizarConneccion();
+            Statement statement = conneccion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultados = statement.executeQuery(query);
             return resultados;
 

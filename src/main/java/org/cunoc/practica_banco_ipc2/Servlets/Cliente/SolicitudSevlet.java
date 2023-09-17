@@ -14,22 +14,24 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "InicioClienteServlet", urlPatterns = "/cliente/inicio-servlet")
-public class InicioClienteServlet extends HttpServlet {
+@WebServlet(name = "SolicitudServlet", urlPatterns = "/cliente/solicitud-servlet")
+public class SolicitudSevlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cliente cliente = (Cliente) req.getSession().getAttribute("cliente");
         Conector conector = (Conector) req.getSession().getAttribute("conector");
         BancoDB bancoDB = new BancoDB(conector);
-        List<Cuenta> cuentas = null;
+        List<Cuenta> cuentasTerceros = null;
+        String alerta = null;
         try {
-             cuentas = bancoDB.listarCuentasUsuario(String.valueOf(cliente.getCodigo()));
-        } catch (SQLException | NullPointerException e) {
+            cuentasTerceros = bancoDB.selecCuentasTerceros(String.valueOf(cliente.getCodigo()));
+            req.setAttribute("cuentasTerceros",cuentasTerceros);
+        } catch (SQLException e) {
             e.printStackTrace();
-            String alerta = "Cuentas no encontradas";
+            alerta = "No se encontraron cuentas";
+            req.setAttribute("alerta",alerta);
         }
-        req.setAttribute("cuentas",cuentas);
-        req.getRequestDispatcher("/areas/cliente/inicio.jsp").forward(req,resp);
+        req.getRequestDispatcher("/areas/cliente/solicitudes.jsp").forward(req,resp);
     }
 }

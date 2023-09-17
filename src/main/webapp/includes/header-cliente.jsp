@@ -27,23 +27,21 @@
             <div class="collapse navbar-collapse" id="navbarExample01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/usuario/inicio-servlet">Perfil</a>
+                        <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/cliente/inicio-servlet">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/usuario/suspension-servlet">Suspensiones</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/cliente/transferir-servlet">Transferencias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/prestamo/usuario-servlet">Prestamos</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/cliente/solicitud-servlet">Solicitudes</a>
                     </li>
                 </ul>
             </div>
             <div class="d-flex align-items-center">
-                <span class="navbar-text">
-                    Saldo: ${cliente.saldo}
+                <span class="navbar-text mr-1">
+                    Cliente: ${cliente.nombre}
                 </span>
-                <a class="btn btn-dark px-3" href="${pageContext.request.contextPath}/usuario/busqueda-servlet"
-                   role="button"><i class="fa fa-search" aria-hidden="true"></i>Buscar</a>
-                <a class="btn btn-dark px-3" href="${pageContext.request.contextPath}/login/elector-servlet"
+                <a class="btn btn-dark px-3" href="${pageContext.request.contextPath}/login/inicio-servlet"
                    role="button"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
             </div>
         </div>

@@ -8,8 +8,17 @@ public class Cuenta {
     private int codigoCliente;
     private Date fechaCreacion;
     private float saldo;
+    private String nombreCliente;
 
     public Cuenta() {
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public int getCodigo() {

@@ -27,12 +27,13 @@ public class LoginServlet extends HttpServlet {
         Usuario user = null;
         String password = req.getParameter("password");
         String error = null;
+        System.out.println(password);
         try {
             user = perfil.encontrarUsuario(password);
             Usuario finalUser = perfil.definirUsuarioPorNivel(user,session);
             switch (finalUser.getTipoUsuario()){
                 case CLIENTE:
-                    resp.sendRedirect("/cliente/inicio-servlet");
+                    resp.sendRedirect("../cliente/inicio-servlet");
             }
         } catch (SQLException e) {
             e.printStackTrace();
